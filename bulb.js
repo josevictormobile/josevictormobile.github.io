@@ -21,7 +21,9 @@ function onDisconnected() {
 function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
-        )
+        {
+            filters: [{ name: 'ITAG'}]
+        })
         .then(device => {
             console.log('> Found ' + device.name);
             console.log('Connecting to GATT Server...');
