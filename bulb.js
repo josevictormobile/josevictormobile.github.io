@@ -22,7 +22,7 @@ function connect() {
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
         {
-            filters: [{ services: [0xffe5] }]
+            filters: [{ services: [0x1802] }]
         })
         .then(device => {
             console.log('> Found ' + device.name);
@@ -31,12 +31,12 @@ function connect() {
             return device.gatt.connect();
         })
         .then(server => {
-            console.log('Getting Service 0xffe5 - Light control...');
-            return server.getPrimaryService(0xffe5);
+            console.log('Getting Service 0x1802 - Light control...');
+            return server.getPrimaryService(0x1802);
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Light control...');
-            return service.getCharacteristic(0xffe9);
+            return service.getCharacteristic(0x2a06);
         })
         .then(characteristic => {
             console.log('All ready!');
@@ -49,7 +49,7 @@ function connect() {
 }
 
 function powerOn() {
-  let data = new Uint8Array([0xcc, 0x23, 0x33]);
+  //let data = new Uint8Array([0xcc, 0x23, 0x33]);
   return ledCharacteristic.writeValue(data)
       .catch(err => console.log('Error when powering on! ', err))
       .then(() => {
@@ -60,7 +60,7 @@ function powerOn() {
 
 function powerOff() {
   let data = new Uint8Array([0xcc, 0x24, 0x33]);
-  return ledCharacteristic.writeValue(data)
+  return ledCharacteristic.writeValue(0x02)
       .catch(err => console.log('Error when switching off! ', err))
       .then(() => {
           poweredOn = false;
