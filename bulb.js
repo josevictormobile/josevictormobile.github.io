@@ -31,11 +31,11 @@ function connect() {
             return device.gatt.connect();
         })
         .then(server => {
-            console.log('Getting Service 0x1802 - Light control...');
+            console.log('Getting Service 0x1802 - Beep');
             return server.getPrimaryService(0x1802);
         })
         .then(service => {
-            console.log('Getting Characteristic 0xffe9 - Light control...');
+            console.log('Getting Characteristic 0xffe9 - Beep');
             return service.getCharacteristic(0x2a06);
         })
         .then(characteristic => {
@@ -50,7 +50,7 @@ function connect() {
 
 function powerOn() {
   //let data = new Uint8Array([0xcc, 0x23, 0x33]);
-  return ledCharacteristic.writeValue(data)
+  return ledCharacteristic.writeValue(0x02)
       .catch(err => console.log('Error when powering on! ', err))
       .then(() => {
           poweredOn = true;
