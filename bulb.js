@@ -19,7 +19,7 @@ function onDisconnected() {
 }
 
 function connect() {
-    console.log('Requesting Bluetooth Device...');
+    alert('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(
         {
             filters: [{ name: 'ITAG'}]
