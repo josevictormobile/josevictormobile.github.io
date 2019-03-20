@@ -36,7 +36,7 @@ function connect() {
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Beep');
-            return service.getCharacteristic('Immediate Alert');
+            return service.getCharacteristic(0x2A06);
         })
         .then(characteristic => {
             console.log('All ready!');
