@@ -25,7 +25,7 @@ function connect() {
             filters: [{ name: 'ITAG'}]
         })
         .then(device => {
-            console.log('> Found ' + device.name);
+            alert('> Found ' + device.name);
             console.log('Connecting to GATT Server...');
             device.addEventListener('gattserverdisconnected', onDisconnected)
             return device.gatt.connect();
@@ -36,7 +36,7 @@ function connect() {
         })
         .then(service => {
             console.log('Getting Characteristic 0xffe9 - Beep');
-            return service.getCharacteristic(0x2a06);
+            return service.getCharacteristic('Immediate Alert');
         })
         .then(characteristic => {
             console.log('All ready!');
