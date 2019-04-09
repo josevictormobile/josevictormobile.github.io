@@ -21,9 +21,14 @@
              border-style: none;   
              color: white; 
             }
+            label{
+                font-size: 50pt;
+                color: rgb(0,50,150);
+            }
         </style>
     </head>
     <body>
+        <label>agora atualizou</label>
         <button onclick="conectar()">Conecte</button>
         <script>
             function conectar(){
@@ -34,8 +39,15 @@
                     alert("conectando em "+device.name);
                     return device.gatt.connect();
                 }).then(server=>{
-                    alert("escolhendo serviço: "+server.name);
+                    alert("escolhendo serviço");
                     return server.getPrimaryService(0x1802);
+                }).then(service=>{
+                    alert("serviço "+service.name+" escolhido");
+                    alert("escolhendo característica");
+                    return service.getCharacteristic(0x2A06);
+                }).then(characteristic=>{
+                    let alertaAlto =Uint8Array.of(2);
+                    return characteristic.writeValue(alertaAlto);
                 }).catch(error=>{
                     alert(error);
                 });
