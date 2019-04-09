@@ -1,36 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>prova</title>
-        <style>
-            body{
-                text-align: center;
-            }
-            button {
-             display: block;
-             position: relative;
-             top: 500px;
-             left: 250px;
-             border-radius: 20px;
-             width: 500px;
-             height:300px;
-             font-size: 30pt;
-             text-align: center;
-             background-color:rgb(0,50,150);
-             border-style: none;   
-             color: white; 
-            }
-            label{
-                font-size: 50pt;
-                color: rgb(0,50,150);
-            }
-        </style>
-    </head>
-    <body>
-        <label>agora atualizou</label>
-        <button onclick="conectar()">Conecte</button>
-        <script>
+	<head>
+		<title>Vixe Carteira Bluetooth</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="manifest" href="manifest.json" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Logo -->
+									<h1><a href="index.html" id="logo">Vixe</a></h1>
+
+								<!-- Nav -->
+									<nav id="nav">
+										<a href="index.html">Homepage</a>
+									</nav>
+
+							</div>
+						</div>
+					</div>
+					<div id="banner">
+						<div class="container">
+							<div class="row">
+								<div class="col-6 col-12-medium">
+
+									<!-- Banner Copy -->
+										<p>Sua mais nova carteira de couro Bluetooth</p>
+										<button class="button-large" onclick="conectar()">Conectar</button>
+
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</section>
+			<!-- Copyright -->
+				<div id="copyright">
+					&copy;Desenvolvido por José Victor Martins Figueiredo.
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script>
             function conectar(){
                 navigator.bluetooth.requestDevice(
                     {filters:[{name: 'ITAG'}],
@@ -52,6 +82,9 @@
                     alert(error);
                 });
             }
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('serviceworker.js');
+            }
         </script>
-    </body>
+	</body>
 </html>
