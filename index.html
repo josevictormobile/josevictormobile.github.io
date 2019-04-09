@@ -3,6 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <title>prova</title>
+        <style>
+            body{
+                text-align: center;
+            }
+            button {
+             display: block;
+             position: relative;
+             top: 500px;
+             left: 250px;
+             border-radius: 20px;
+             width: 500px;
+             height:300px;
+             font-size: 30pt;
+             text-align: center;
+             background-color:rgb(0,50,150);
+             border-style: none;   
+             color: white; 
+            }
+        </style>
     </head>
     <body>
         <button onclick="conectar()">Conecte</button>
@@ -15,7 +34,8 @@
                     alert("conectando em "+device.name);
                     return device.gatt.connect();
                 }).then(server=>{
-                    
+                    alert("escolhendo serviço: "+server.name);
+                    return server.getPrimaryService(0x1802);
                 }).catch(error=>{
                     alert(error);
                 });
