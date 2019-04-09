@@ -5,10 +5,13 @@
         <title>prova</title>
     </head>
     <body>
+        <button onclick="conectar()">Conecte</button>
         <script>
-            navigator.bluetooth.requestDevice(
-                {filters:[{name: 'ITAG'}]}
-            );
+            function conectar(){
+                navigator.bluetooth.requestDevice(
+                    {filters:[{name: 'ITAG'}]}
+                );
+            }
         </script>
     </body>
 </html>
