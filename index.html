@@ -9,8 +9,13 @@
         <script>
             function conectar(){
                 navigator.bluetooth.requestDevice(
-                    {filters:[{name: 'ITAG'}]}
-                );
+                    {filters:[{name: 'ITAG'}],
+                    optionalServices: [0x1802]}
+                ).then(device=>{
+
+                }).catch(error=>{
+                    alert(error);
+                });
             }
         </script>
     </body>
