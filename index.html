@@ -12,7 +12,7 @@
                     {filters:[{name: 'ITAG'}],
                     optionalServices: [0x1802]}
                 ).then(device=>{
-
+                    alert("possivelmente conectou"+device.name);
                 }).catch(error=>{
                     alert(error);
                 });
